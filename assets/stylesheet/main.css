@@ -136,7 +136,7 @@ button {
 }
 .stats ul {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     place-items: center;
 }
 .stat-item div {
@@ -232,4 +232,43 @@ button {
 }
 .exercise-level-list button.locked .lock-icon {
     font-size: 2rem;
+}
+
+/* welcome page */
+
+.welcome-div {
+    display: flex;
+    padding-top: 8rem; 
+    justify-content: space-between;
+    font-family: 'Caveat', cursive;
+}
+.welcome-logo {
+    padding-left: 5rem;
+}
+.welcome-logo img {
+    height: 17rem;
+    width: 31rem;
+}
+.welcome-text {
+    color: white;
+    margin-right: 6rem;
+    line-height: 1.4;
+}
+.welcome-text h2 {
+    font-size: 5rem;
+}
+.welcome-text p {
+    font-size: 2rem;
+}
+.welcome-text .tagline {
+    font-size: 3rem;
+}
+.welcome-text button {
+    font-size: 2rem;
+    width: 8rem;
+    color: grey;
+}
+.wel-input {
+    font-size: 2rem;
+    color: grey;
 }
