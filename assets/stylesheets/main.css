@@ -177,18 +177,20 @@ button {
 
 .exercise-levels {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     margin: 1rem 0;
 }
 .exercise-level-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
+    /* flex-grow: 1; */
     align-items: center;
 }
 .exercise-level-list li {
-    margin: 0 0.25rem;
+    margin: 0 1.2rem;
+    
 }
 .previous-button, .next-button {
     background: transparent;
@@ -206,10 +208,10 @@ button {
 
 .exercise-level-list button {
     color: #fff;
-    height: 5rem;
-    width: 5rem;
+    height: 7rem;
+    width: 7rem;
     display: flex;
-    font-size: 1rem;
+    font-size: 1.2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -217,19 +219,37 @@ button {
     box-shadow: none;
     background: transparent;
     border-radius: 50%;
-    border: 0.075px solid #fff;    
+    border: 0.075px solid #fff;  
+      
+}
+.exercise-level-list button:hover {
+    background: rgba(256, 256, 256, 0.15);
+    transform: scale(1.1);
 }
 .exercise-level-list button .level-number {
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    padding-bottom: 1rem;
 }
 .exercise-rating i:nth-child(2) {
     position: relative;
     top: 0.25rem;
 }
 .exercise-level-list button.locked {
-    background: rgba(256, 256, 256, 0.15);
+    /* background: rgba(256, 256, 256, 0.15); */
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.247);
+    
+}
+.exercise-level-list button.locked i {
+    color: rgba(255, 255, 255, 0.555);
+   
 }
 .exercise-level-list button.locked .lock-icon {
-    font-size: 2rem;
+    font-size: 3.6rem;
+    color: rgba(255, 255, 255, 0.815);
+    position: absolute;
+    /* bottom: 15px; */
+    top: 0;
+    
 }
