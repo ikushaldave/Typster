@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Typster</title>
+        <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Caveat:wght@700&family=Courier+Prime&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="./assets/stylesheets/main.css"> 
+    </head>
+    <body>
+
+        <header class="header container">
+            <h1 class="site-logo">Typster</h1>
+            <button class="profile-button">
+                <i class="fa fa-user-o"></i>
+            </button>
+        </header>
+        <main class="main container">
+            <section class="levels">
+                <button class="level-btn">Beginner</button>
+                <button class="level-btn">Intermediate</button>
+                <button class="level-btn">Expert</button>
+            </section>
+            <section class="typewriter">
+                <div class="stats">
+                    <ul>
+                        <li class="stat-item">
+                            <div>
+                                <div class="stat-name">Speed</div>
+                                <div class="stat-value">20 wpm</div>
+                            </div>
+                        </li>
+                        <li class="stat-item">
+                            <div>
+                                <div class="stat-name">Time Left</div>
+                                <div class="stat-value"><time>2:20s</time></div>
+                            </div>
+                        </li>
+                        <li class="stat-item">
+                            <div>
+                                <div class="stat-name">Word Left</div>
+                                <div class="stat-value">20</div>
+                            </div>
+                        </li>
+                        <li class="stat-item">
+                            <div>
+                                <div class="stat-name">Error</div>
+                                <div class="stat-value">3/5</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <p class="writing-text">
+                    <span class="correct-text">L</span><span class="wrong-text">o</span>rem ipsum dolor sit amet, consectetur adipiscing elit. Integer in nisi arcu. Duis blandit ultrices metus, at commodo massa blandit vitae. Sed tempor faucibus turpis, quis faucibus leo porttitor sit amet. Cras efficitur elit sit amet luctus commodo. Sed facilisis orci et dictum maximus. Proin at fermentum mi. Donec eu venenatis ante. Quisque id lacinia lectus, vitae tempus nisi. Pellentesque pellentesque tortor ex, id suscipit nibh interdum eu. Pellentesque vehicula nibh condimentum enim vulputate, sed sagittis tellus fringilla. Integer pellentesque nulla in molestie egestas. Fusce ultrices ipsum a faucibus faucibus. 
+                </p>
+            </section>
+            <section class="exercise-levels">
+                <button class="previous-button">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <ul class="exercise-level-list">
+                    <li><button></button></li>
+                    <li>
+                        <button>
+                            <span class="level-number">3</span>
+                            <span class="exercise-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="locked">
+                            <i class="fa fa-lock lock-icon"></i>
+                        </button>
+                    </li>
+                    <li><button></button></li>
+                    <li><button></button></li>
+                </ul>
+                <button class="next-button"><i class="fa fa-chevron-right"></i></button>
+            </section>
+        </main>
+    </body>
+</html>
