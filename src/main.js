@@ -14,8 +14,7 @@ function levelHandler(e) {
 	if (e.target.classList.contains("level-btn")) {
 		let targeted = e.target.innerText.toLowerCase();
 		carouselUi(levels[targeted].length, targeted);
-		[...level.children].forEach(e =>
-			e.classList.remove("active"));
+		[...level.children].forEach((e) => e.classList.remove("active"));
 		e.target.classList.add("active");
 	}
 }
@@ -32,26 +31,25 @@ function carouselUi(len, lvl) {
                               <i class="fa fa-star-o"></i>
                               <i class="fa fa-star-o"></i>
                           </span>`;
+		li.setAttribute("data-level", i);
 		if (!levels[lvl][i].isCompleted) {
-			btn.classList.add("locked");
+			li.classList.add("locked");
 			let lock = document.createElement("i");
 			lock.classList.add("fa", "fa-lock", "lock-icon");
 			btn.append(lock);
 		}
 		li.append(btn);
+		li.addEventListener("click", carouselHandler);
 		ul.append(li);
 	}
-	ul.addEventListener("click", carouselHandler);
 }
 
 // carousel handler function
 function carouselHandler(e) {
-	if (!e.target.classList.contains("locked") && e.target.tagName == "BUTTON") {
-		console.log(e.target.children[0].innerText);
-		let index = +(e.target.children[0].innerText)-1;
+	if (!e.currentTarget.classList.contains("locked")) {
+		let index = e.currentTarget.dataset.level;
 		createUi(levels[active][index].typing);
 	}
-
 }
 
 function createUi(writingTest, t, w, er, g = 0, s = 0) {
@@ -71,12 +69,11 @@ level.addEventListener("click", levelHandler);
 carouselUi(levels[active].length, active);
 
 function latestIndex() {
-	
 	levels[active].forEach((ele, i) => {
-		if (ele.isCompleted ) {
-			latest = levels[active][i+1];
+		if (ele.isCompleted) {
+			latest = levels[active][i + 1];
 		}
-	})
+	});
 }
 latestIndex();
 createUi(latest.typing);
