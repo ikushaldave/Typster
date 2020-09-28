@@ -5,14 +5,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
 		<link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Caveat:wght@700&family=Courier+Prime&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
 		<link rel="stylesheet" href="../assets/stylesheets/main.css" />
-		<script src="https://kit.fontawesome.com/c17701c830.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<header class="header container">
 			<h1 class="site-logo">Typster</h1>
 		</header>
-		<div class="welcome-div">
+		<div class="welcome-div container">
 			<div class="welcome-logo">
 				<img src="../assets/Images/kindpng_270578.png" />
 			</div>
@@ -21,20 +21,9 @@
 				<p class="tagline">Be a Pro at typing.</p>
 				<p>Enter your name here:</p>
 				<input class="wel-input" />
-				<button><i class="fas fa-arrow-right"></i></button>
+				<button class="wel-button"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
 			</div>
 		</div>
-		<script>
-			let input = document.querySelector("input");
-			console.dir(input);
-			input.addEventListener("keydown", function (e) {
-				console.log(e.keyCode);
-				if (e.keyCode === 13) {
-					console.log("enter pressed");
-					console.log(e.target.value);
-					localStorage.setItem("username", e.target.value);
-				}
-			});
-		</script>
+		<script src="../src/welcome.js"></script>
 	</body>
 </html>

@@ -344,7 +344,6 @@ button {
 	font-family: "Caveat", cursive;
 }
 .welcome-logo {
-	padding-left: 5rem;
 }
 .welcome-logo img {
 	height: 17rem;
@@ -352,7 +351,7 @@ button {
 }
 .welcome-text {
 	color: white;
-	margin-right: 6rem;
+	margin-left: 6rem;
 	line-height: 1.4;
 }
 .welcome-text h2 {
@@ -372,6 +371,7 @@ button {
 .wel-input {
 	font-size: 2rem;
 	color: grey;
+	width: 100%;
 }
 .active {
 	background-color: rgba(0, 0, 0, 0.329);
