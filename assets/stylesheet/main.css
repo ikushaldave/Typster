@@ -3,19 +3,87 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -24,22 +92,35 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
 	display: block;
 }
 body {
 	line-height: 1;
 }
-ol, ul {
+ol,
+ul {
 	list-style: none;
 }
-blockquote, q {
+blockquote,
+q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: "";
 	content: none;
 }
 table {
@@ -47,228 +128,233 @@ table {
 	border-spacing: 0;
 }
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 /**** CUSTOM CSS ****/
 
 /* Site Setup */
 html {
-    font-size: 16px;
+	font-size: 16px;
 }
 body {
-    background-color: #1e4656;
-    font-family: 'Noto Sans', sans-serif;;
+	background-color: #1e4656;
+	font-family: "Noto Sans", sans-serif;
 }
 button {
-    outline: 0;
-    cursor: pointer;
+	outline: 0;
+	cursor: pointer;
 }
 
 .container {
-    width: 100%;
-    padding: 1rem;
-    max-width: 1100px;
-    margin: 0 auto;
+	width: 100%;
+	padding: 1rem;
+	max-width: 1100px;
+	margin: 0 auto;
 }
 
 .site-logo {
-    font-family: 'Caveat', cursive;
-    color: #fff;
-    font-size: 3rem;
+	font-family: "Caveat", cursive;
+	color: #fff;
+	font-size: 3rem;
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;    
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
 }
 .header {
-    flex: 1
+	flex: 1;
 }
 .profile-button {
-    border: none;
-    padding: 0;
-    margin: 0;
-    background-color: transparent;
-    box-shadow: none;
-    
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+	border: none;
+	padding: 0;
+	margin: 0;
+	background-color: transparent;
+	box-shadow: none;
+
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
 }
 .profile-button i {
-    color: grey;
-    font-size: 3rem;
+	color: grey;
+	font-size: 3rem;
 }
 
 .levels {
-    display: flex;
-    flex: 1;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
+	display: flex;
+	flex: 1;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	margin-top: 2rem;
 }
 .level-btn {
-    box-shadow: none;
-    background: transparent;
-    border-radius: 1.5rem;
-    border: 0.075rem solid #fff;
-    padding: 0.5rem 2rem;
-    color: #fff;
-    line-height: 1.5;
-    min-width: 12rem;
-    font-size: 1.25rem;
-    margin: 0.5rem 1rem;
+	box-shadow: none;
+	background: transparent;
+	border-radius: 1.5rem;
+	border: 0.075rem solid #fff;
+	padding: 0.5rem 2rem;
+	color: #fff;
+	line-height: 1.5;
+	min-width: 12rem;
+	font-size: 1.25rem;
+	margin: 0.5rem 1rem;
 }
 .typewriter {
-    width: 100%;
-    margin-top: 1.5rem;
-    border: 0.075rem solid darkgray;
-    padding: 1rem 2rem;
+	width: 100%;
+	margin-top: 1.5rem;
+	border: 0.075rem solid darkgray;
+	padding: 1rem 2rem;
 }
 .stats {
-    background: rgba(256,256,256,0.1);
-    padding: 1.25rem;
-    color: #fff;
+	background: rgba(256, 256, 256, 0.1);
+	padding: 1.25rem;
+	color: #fff;
 }
 .stats ul {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    place-items: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	place-items: center;
 }
 .stat-item div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
+.stat-item .stat-value {
+	flex-direction: row;
+}
+
 .stat-name {
-    font-weight: bold;
-    margin-bottom: 0.25rem;
+	font-weight: bold;
+	margin-bottom: 0.25rem;
 }
 .stat-value {
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 1.75rem;
+	font-weight: 400;
+	font-size: 1rem;
+	line-height: 1.75rem;
 }
 .stat-value time {
-    font-family: 'Aldrich', sans-serif;
-    font-size: 1.25rem;
+	font-family: "Aldrich", sans-serif;
+	font-size: 1.25rem;
 }
 
 .writing-text {
-    color: #fff;
-    font-size: 1.25rem;
-    font-family: 'Courier Prime', monospace;
-    line-height: 1.25;
-    margin-top: 1.25rem;
-    letter-spacing: 0.025rem;
-    text-align: justify;
+	color: #fff;
+	font-size: 1.25rem;
+	font-family: "Courier Prime", monospace;
+	line-height: 1.25;
+	margin-top: 1.25rem;
+	letter-spacing: 0.025rem;
+	text-align: justify;
 }
 .correct-text {
-    color: greenyellow
+	color: greenyellow;
 }
 .wrong-text {
-    color: #fd7f7f;
+	color: #fd7f7f;
 }
 
 .exercise-levels {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 1rem 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 1rem 0;
 }
 .exercise-level-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
 }
 .exercise-level-list li {
-    margin: 0 0.25rem;
+	margin: 0 0.25rem;
 }
-.previous-button, .next-button {
-    background: transparent;
-    box-shadow: none;
-    border-radius: 50%;
-    height: 2rem;
-    width: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1rem;
-    color: #fff;
-    border: 0.075px solid #fff;
+.previous-button,
+.next-button {
+	background: transparent;
+	box-shadow: none;
+	border-radius: 50%;
+	height: 2rem;
+	width: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1rem;
+	color: #fff;
+	border: 0.075px solid #fff;
 }
 
 .exercise-level-list button {
-    color: #fff;
-    height: 5rem;
-    width: 5rem;
-    display: flex;
-    font-size: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: none;
-    background: transparent;
-    border-radius: 50%;
-    border: 0.075px solid #fff;    
+	color: #fff;
+	height: 5rem;
+	width: 5rem;
+	display: flex;
+	font-size: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	box-shadow: none;
+	background: transparent;
+	border-radius: 50%;
+	border: 0.075px solid #fff;
 }
 .exercise-level-list button .level-number {
-    font-weight: 700;
-    font-size: 1.5rem;
+	font-weight: 700;
+	font-size: 1.5rem;
 }
 .exercise-rating i:nth-child(2) {
-    position: relative;
-    top: 0.25rem;
+	position: relative;
+	top: 0.25rem;
 }
 .exercise-level-list button.locked {
-    background: rgba(256, 256, 256, 0.15);
+	background: rgba(256, 256, 256, 0.15);
 }
 .exercise-level-list button.locked .lock-icon {
-    font-size: 2rem;
+	font-size: 2rem;
 }
 
 /* welcome page */
 
 .welcome-div {
-    display: flex;
-    padding-top: 8rem; 
-    justify-content: space-between;
-    font-family: 'Caveat', cursive;
+	display: flex;
+	padding-top: 8rem;
+	justify-content: space-between;
+	font-family: "Caveat", cursive;
 }
 .welcome-logo {
-    padding-left: 5rem;
+	padding-left: 5rem;
 }
 .welcome-logo img {
-    height: 17rem;
-    width: 31rem;
+	height: 17rem;
+	width: 31rem;
 }
 .welcome-text {
-    color: white;
-    margin-right: 6rem;
-    line-height: 1.4;
+	color: white;
+	margin-right: 6rem;
+	line-height: 1.4;
 }
 .welcome-text h2 {
-    font-size: 5rem;
+	font-size: 5rem;
 }
 .welcome-text p {
-    font-size: 2rem;
+	font-size: 2rem;
 }
 .welcome-text .tagline {
-    font-size: 3rem;
+	font-size: 3rem;
 }
 .welcome-text button {
-    font-size: 2rem;
-    width: 8rem;
-    color: grey;
+	font-size: 2rem;
+	width: 8rem;
+	color: grey;
 }
 .wel-input {
-    font-size: 2rem;
-    color: grey;
+	font-size: 2rem;
+	color: grey;
 }
