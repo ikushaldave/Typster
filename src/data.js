@@ -7,7 +7,7 @@ const levels = {
 			time: [],
 			wordLeft: [],
 			error: [],
-			isCompleted: false,
+			isCompleted: true,
 		},
 		{
 			typing: "Some assert that authors often misinterpret the fox as a passionate deer, when in actuality it feels more like a creative apricot; This could be, or perhaps the literature would have us believe that a painstaking currant is not but a grapefruit. The receptive nectarine reveals itself as a lively fox to those who look.",
@@ -46,6 +46,25 @@ const levels = {
 			isCompleted: false,
 		},
 	],
-	intermediate: [],
+	intermediate: [
+		{
+			typing: "Their camel was, in this moment, a upbeat nectarine. Some kind pineapples are thought of simply as sheeps. The fly of a grapes becomes a fine octopus. One cannot separate scorpions from nice figs; The modest eagle reveals itself as a courageous sheep to those who look.",
+			grades: [],
+			speed: [],
+			time: [],
+			wordLeft: [],
+			error: [],
+			isCompleted: false,
+		},
+		{
+			typing: "Some assert that authors often misinterpret the fox as a passionate deer, when in actuality it feels more like a creative apricot; This could be, or perhaps the literature would have us believe that a painstaking currant is not but a grapefruit. The receptive nectarine reveals itself as a lively fox to those who look.",
+			grades: [],
+			speed: [],
+			time: [],
+			wordLeft: [],
+			error: [],
+			isCompleted: false,
+		},
+	],
 	expert: [],
 };
