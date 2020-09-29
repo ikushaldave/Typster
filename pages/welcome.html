@@ -6,7 +6,7 @@
 		<title>Document</title>
 		<link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Caveat:wght@700&family=Courier+Prime&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="../assets/stylesheets/main.css" />
-		<script src="https://kit.fontawesome.com/c17701c830.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
 	</head>
 	<body>
 		<header class="header container">
@@ -20,21 +20,10 @@
 				<h2>Welcome to Typster...</h2>
 				<p class="tagline">Be a Pro at typing.</p>
 				<p>Enter your name here:</p>
-				<input class="wel-input" />
-				<button><i class="fas fa-arrow-right"></i></button>
+				<input class="wel-input" type="text" />
+				<a href="../index.html" class="wlcBtn"><i class="fas fa-arrow-right"></i></a>
 			</div>
 		</div>
-		<script>
-			let input = document.querySelector("input");
-			console.dir(input);
-			input.addEventListener("keydown", function (e) {
-				console.log(e.keyCode);
-				if (e.keyCode === 13) {
-					console.log("enter pressed");
-					console.log(e.target.value);
-					localStorage.setItem("username", e.target.value);
-				}
-			});
-		</script>
+		<script src="../src/welcome.js"></script>
 	</body>
 </html>

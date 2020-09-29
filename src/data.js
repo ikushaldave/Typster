@@ -1,13 +1,14 @@
 const levels = {
 	beginner: [
 		{
-			typing: "Their camel was, in this moment, a upbeat nectarine. Some kind pineapples are thought of simply as sheeps. The fly of a grapes becomes a fine octopus. One cannot separate scorpions from nice figs; The modest eagle reveals itself as a courageous sheep to those who look.",
+			typing: "Their Camel was, In This moment, a upbeat nectarine. Some kind pineapples are thought of simply as sheeps. The fly of a grapes becomes a fine octopus. One cannot separate scorpions from nice figs; The modest eagle reveals itself as a courageous sheep to those who look.",
 			grades: [],
 			speed: [],
 			time: [],
 			wordLeft: [],
 			error: [],
-			isCompleted: true,
+			locked: false,
+			isCompleted: false,
 		},
 		{
 			typing: "Some assert that authors often misinterpret the fox as a passionate deer, when in actuality it feels more like a creative apricot; This could be, or perhaps the literature would have us believe that a painstaking currant is not but a grapefruit. The receptive nectarine reveals itself as a lively fox to those who look.",
@@ -16,6 +17,7 @@ const levels = {
 			time: [],
 			wordLeft: [],
 			error: [],
+			locked: true,
 			isCompleted: false,
 		},
 		{
@@ -25,6 +27,7 @@ const levels = {
 			time: [],
 			wordLeft: [],
 			error: [],
+			locked: true,
 			isCompleted: false,
 		},
 		{
@@ -34,6 +37,7 @@ const levels = {
 			time: [],
 			wordLeft: [],
 			error: [],
+			locked: true,
 			isCompleted: false,
 		},
 		{
@@ -43,18 +47,20 @@ const levels = {
 			time: [],
 			wordLeft: [],
 			error: [],
+			locked: true,
 			isCompleted: false,
 		},
 	],
 	intermediate: [
 		{
-			typing: "Their camel was, in this moment, a upbeat nectarine. Some kind pineapples are thought of simply as sheeps. The fly of a grapes becomes a fine octopus. One cannot separate scorpions from nice figs; The modest eagle reveals itself as a courageous sheep to those who look.",
+			typing: "Authors often misinterpret the rabbit as an exclusive melon, when in actuality it feels more like a sincere scorpion. They were lost without the warm grapefruit that composed their pig. In modern times a strawberry can hardly be considered a shy sheep without also being a turtle. Of course, an eagle is a rational bee. Few can name an eminent crocodile that isn't a pro-active apricot. Some polite cats are thought of simply as zebras? A bear sees a grape as a peaceful kiwi? Waking to the buzz of the alarm clock, their lemon was, in this moment, a friendly pomegranate.",
 			grades: [],
 			speed: [],
 			time: [],
 			wordLeft: [],
 			error: [],
-			isCompleted: true,
+			locked: true,
+			isCompleted: false,
 		},
 		{
 			typing: "Some assert that authors often misinterpret the fox as a passionate deer, when in actuality it feels more like a creative apricot; This could be, or perhaps the literature would have us believe that a painstaking currant is not but a grapefruit. The receptive nectarine reveals itself as a lively fox to those who look.",
@@ -63,6 +69,7 @@ const levels = {
 			time: [],
 			wordLeft: [],
 			error: [],
+			locked: true,
 			isCompleted: false,
 		},
 	],
@@ -74,6 +81,7 @@ const levels = {
 			time: [],
 			wordLeft: [],
 			error: [],
+			locked: true,
 			isCompleted: false,
 		},
 	],

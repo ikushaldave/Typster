@@ -209,6 +209,7 @@ button {
 	margin-top: 1.5rem;
 	border: 0.075rem solid darkgray;
 	padding: 1rem 2rem;
+	position: relative;
 }
 .stats {
 	background: rgba(256, 256, 256, 0.1);
@@ -364,15 +365,37 @@ button {
 .welcome-text .tagline {
 	font-size: 3rem;
 }
-.welcome-text button {
+.welcome-text .wlcBtn {
+	display: inline-block;
+	text-align: center;
 	font-size: 2rem;
 	width: 8rem;
-	color: grey;
+	color: gray;
+	background-color: #fff;
 }
 .wel-input {
+	display: inline-block;
 	font-size: 2rem;
 	color: grey;
 }
 .active {
 	background-color: rgba(0, 0, 0, 0.329);
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 99;
+	background-color: rgba(128, 128, 128, 0.199);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.overlay button {
+	font: inherit;
+	font-size: 2rem;
 }
