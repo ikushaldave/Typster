@@ -1,7 +1,7 @@
 const levels = {
 	beginner: [
 		{
-			typing: "Their Camel was, In This moment, a upbeat nectarine. Some kind pineapples are thought of simply as sheeps. The fly of a grapes becomes a fine octopus. One cannot separate scorpions from nice figs; The modest eagle reveals itself as a courageous sheep to those who look.",
+			typing: "Their Camel was, In This moment, a upbeat nectarine.",
 			grades: [],
 			speed: [],
 			time: [],

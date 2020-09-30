@@ -19,6 +19,7 @@ const error = document.querySelector(".error");
 const totalError = document.querySelector(".total-error");
 let wordCounter = 0;
 let wordLen = 0;
+let letterCounter = 0;
 
 function levelHandler(e) {
 	if (e.target.classList.contains("level-btn")) {
@@ -59,12 +60,15 @@ function carouselUi(len, lvl) {
 function carouselHandler(e) {
 	if (!e.currentTarget.classList.contains("locked")) {
 		let index = e.currentTarget.dataset.level;
-		createUi(levels[active][index].typing);
 		mistakes = 0;
+		wordCounter = 0;
+		wordLen = 0;
+		letterCounter = 0;
+		createUi(levels[active][index].typing);
 	}
 }
 
-function createUi(writingTest, t, w, er=0, g = 0, s = 0) {
+function createUi(writingTest, t, w, er = 0, g = 0, s = 0) {
 	writingText.innerText = writingTest;
 	time.innerText = t;
 	error.innerText = er;
@@ -72,21 +76,23 @@ function createUi(writingTest, t, w, er=0, g = 0, s = 0) {
 	wordLen = wordsArray[0].length;
 	wordLeft.innerText = writingTest.split(" ").length;
 	text = [...writingText.innerText];
+	speed.innerText = s;
+
 	for (let i = 0; i < g; i++) {
 		grade.children[i].classList.remove("fa-star").add("fa-star-o");
 	}
+
 	if (active == "beginner") {
-    totalError.innerText = "10";
-  } else if (active == "intermediate") {
-    totalError.innerText = "8";
-	}
-	else {
+		totalError.innerText = "10";
+	} else if (active == "intermediate") {
+		totalError.innerText = "8";
+	} else {
 		totalError.innerText = "6";
 	}
-	speed.innerText = s;
+
 	if (!document.querySelector(".overlay")) {
-    overlayGenerate();
-  }
+		overlayGenerate();
+	}
 	document.body.addEventListener("keyup", gameLogicHandler);
 }
 
@@ -119,37 +125,33 @@ function gameLogicHandler(e) {
 	}
 
 	if (!overlay && ((e.keyCode > 47 && e.keyCode < 91) || (e.keyCode > 95 && e.keyCode < 112) || (e.keyCode > 185 && e.keyCode < 223) || e.keyCode === 32)) {
-		
 		if (text[index] === e.key) {
-
 			console.log("match");
 			text[index] = `<span class="correct-text">${text[index]}</span>`;
 			writingText.innerHTML = text.join("");
-			
 		} else {
 			console.log("not match");
 			text[index] = `<span class="wrong-text">${text[index]}</span>`;
 			writingText.innerHTML = text.join("");
-			
-			
+
 			error.innerText = ++mistakes;
 			console.log(mistakes);
 		}
-		console.log(index, wordLen);
-		if (index === wordLen) {
+		console.log(letterCounter, wordLen);
+		if (letterCounter === wordLen) {
 			wordCounter++;
-			wordLen += wordsArray[wordCounter].length;
+			wordLen += wordsArray[wordCounter].length + 1;
 			console.log(wordLen, "counter");
-			wordLeft.innerText = +(wordLeft.innerText)-1;
+			wordLeft.innerText = +wordLeft.innerText - 1;
 		}
 		index++;
+		letterCounter++;
 		gameCompleted();
-		
 	}
 }
 
 function gameCompleted() {
-	if (text.length === index + 1) {
+	if (text.length === letterCounter) {
 		console.log("game over");
 		document.body.removeEventListener("keyup", gameLogicHandler);
 	}
