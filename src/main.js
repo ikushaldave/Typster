@@ -1,6 +1,8 @@
 let latest = null;
 let index = 0;
 let mistakes = 0;
+let startTimer = null;
+let start = false;
 // DOM Selectors
 const level = document.querySelector(".levels");
 const levelSelector = document.querySelector(".exercise-level-list");
@@ -10,6 +12,7 @@ const typewriter = document.querySelector(".typewriter");
 let active = document.querySelector(".active").textContent.toLowerCase();
 let text = "";
 let wordsArray = null;
+
 // stats
 const grade = document.querySelector(".grade");
 const speed = document.querySelector(".speed");
@@ -20,6 +23,9 @@ const totalError = document.querySelector(".total-error");
 let wordCounter = 0;
 let wordLen = 0;
 let letterCounter = 0;
+let min = document.querySelector(".min");
+let sec = document.querySelector(".sec");
+
 
 function levelHandler(e) {
 	if (e.target.classList.contains("level-btn")) {
@@ -64,30 +70,35 @@ function carouselHandler(e) {
 		wordCounter = 0;
 		wordLen = 0;
 		letterCounter = 0;
+		stopInterval();
 		createUi(levels[active][index].typing);
 	}
 }
 
-function createUi(writingTest, t, w, er = 0, g = 0, s = 0) {
+function createUi(writingTest, m, s, w, er = 0, g = 0, sp = 0) {
 	writingText.innerText = writingTest;
-	time.innerText = t;
+	sec.innerText = "00";
 	error.innerText = er;
 	wordsArray = writingTest.split(" ");
 	wordLen = wordsArray[0].length;
 	wordLeft.innerText = writingTest.split(" ").length;
 	text = [...writingText.innerText];
-	speed.innerText = s;
-
+	speed.innerText = sp;
+	started = true
 	for (let i = 0; i < g; i++) {
 		grade.children[i].classList.remove("fa-star").add("fa-star-o");
 	}
 
 	if (active == "beginner") {
 		totalError.innerText = "10";
+		min.innerText = 3;
+		
 	} else if (active == "intermediate") {
 		totalError.innerText = "8";
+		min.innerText = 2;
 	} else {
 		totalError.innerText = "6";
+		min.innerText = 1;
 	}
 
 	if (!document.querySelector(".overlay")) {
@@ -125,6 +136,11 @@ function gameLogicHandler(e) {
 	}
 
 	if (!overlay && ((e.keyCode > 47 && e.keyCode < 91) || (e.keyCode > 95 && e.keyCode < 112) || (e.keyCode > 185 && e.keyCode < 223) || e.keyCode === 32)) {
+	if (started) {
+		startInterval();
+		started = false;
+	}	 
+    
 		if (text[index] === e.key) {
 			console.log("match");
 			text[index] = `<span class="correct-text">${text[index]}</span>`;
@@ -145,7 +161,9 @@ function gameLogicHandler(e) {
 			wordLeft.innerText = +wordLeft.innerText - 1;
 		}
 		index++;
+		console.log(startTimer);
 		letterCounter++;
+		limitChecker(e.target);
 		gameCompleted();
 	}
 }
@@ -153,9 +171,47 @@ function gameLogicHandler(e) {
 function gameCompleted() {
 	if (text.length === letterCounter) {
 		console.log("game over");
+		stopInterval();
 		document.body.removeEventListener("keyup", gameLogicHandler);
+
 	}
 }
+
+function timer(){
+    if( min.innerText == 0 && sec.innerText == 0){
+        min.innerText = 0;
+        sec.innerText = 0;
+    } else if(sec.innerText != 0){
+        sec.innerText--;
+    } else if(min.innerText != 0 && sec.innerText == 0){
+        sec.innerText = 59;
+        min.innerText--;
+    } else if( min.innerText == 0){
+        min.innerText = 60;
+    }
+    return;
+}
+function startInterval() {
+  startTimer = setInterval(function () {
+    timer();
+  }, 1000);
+}
+function stopInterval() {
+	clearInterval(startTimer);
+	startTimer = null;
+}
+
+function limitChecker(e) {
+	if (
+		mistakes > totalError.innerText
+	)
+	{
+		console.log(levels[active][e.children[0].innerText - 1]);
+		createUi(levels[active][(e.children[0].innerText)-1].typing);
+		stopInterval();
+		}
+}
+
 
 latestIndex();
 createUi(latest.typing);
