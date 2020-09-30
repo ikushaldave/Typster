@@ -60,7 +60,7 @@ function carouselHandler(e) {
 }
 
 function createUi(writingTest, t, w, er, g = 0, s = 0) {
-	console.log("working");
+	console.trace("calling creaing UI");
 	writingText.innerText = writingTest;
 	time.innerText = t;
 	error.innerText = er;
@@ -70,8 +70,10 @@ function createUi(writingTest, t, w, er, g = 0, s = 0) {
 		grade.children[i].classList.remove("fa-star").add("fa-star-o");
 	}
 	speed.innerText = s;
-	overlayGenerate();
-	document.body.addEventListener("keyup", gameLogicHandler);
+	if (!document.querySelector(".overlay")) {
+		overlayGenerate();
+	}
+	document.addEventListener("keyup", gameLogicHandler);
 }
 
 function overlayGenerate() {
@@ -92,18 +94,17 @@ function latestIndex() {
 }
 
 function gameLogicHandler(e) {
+	e.preventDefault();
 	let overlay = document.querySelector(".overlay");
 	str = "";
 	console.log(index);
+	console.log(overlay);
 
 	if (overlay && e.key === text[0]) {
 		console.log("working");
-		overlay.remove();
-		overlay = null;
+		overlay = overlay.remove();
 		index = 0;
 	}
-
-	console.log(overlay);
 
 	if (!overlay && ((e.keyCode > 47 && e.keyCode < 91) || (e.keyCode > 95 && e.keyCode < 112) || (e.keyCode > 185 && e.keyCode < 223) || e.keyCode === 32)) {
 		if (text[index] === e.key) {
@@ -118,6 +119,15 @@ function gameLogicHandler(e) {
 			console.log(text);
 		}
 		index++;
+
+		gameCompleted();
+	}
+}
+
+function gameCompleted() {
+	if (text.length === index + 1) {
+		console.log("game over");
+		document.body.removeEventListener("keyup", gameLogicHandler);
 	}
 }
 

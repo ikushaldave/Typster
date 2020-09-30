@@ -17,7 +17,7 @@ const levels = {
 			time: [],
 			wordLeft: [],
 			error: [],
-			locked: true,
+			locked: false,
 			isCompleted: false,
 		},
 		{
