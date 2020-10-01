@@ -8,6 +8,7 @@ let wordsArray = null;
 let wordCounter = 0;
 let wordLen = 0;
 let letterCounter = 0;
+let activeLvl = null;
 
 // DOM Selectors
 const level = document.querySelector(".levels");
@@ -41,14 +42,27 @@ function levelHandler(e) {
 function carouselUi(len, lvl) {
 	ul.innerHTML = "";
 	for (let i = 0; i < len; i++) {
+		let gradeArr = levels[lvl][i].grades;
+		let gradeLastStat = gradeArr[gradeArr.length - 1];
 		let li = document.createElement("li");
 		let btn = document.createElement("button");
-		btn.innerHTML = `<span class="level-number">${i + 1}</span>
-                          <span class="exercise-rating">
-                              <i class="far fa-star"></i>
-                              <i class="far fa-star"></i>
-                              <i class="far fa-star"></i>
-                          </span>`;
+		let lvlNum = document.createElement("span");
+		lvlNum.classList.add("level-number");
+		lvlNum.innerText = i + 1;
+		let span = document.createElement("span");
+		span.classList.add("exercise-rating");
+		console.log(len, lvl);
+		for (let j = 0; j < 3; j++) {
+			const star = document.createElement("i");
+			if (gradeLastStat) {
+				star.classList.add("fas", "fa-star");
+				gradeLastStat--;
+			} else {
+				star.classList.add("far", "fa-star");
+			}
+			span.append(star);
+		}
+		btn.append(lvlNum, span);
 		li.setAttribute("data-level", i);
 		if (levels[lvl][i].locked) {
 			li.classList.add("locked");
@@ -65,9 +79,9 @@ function carouselUi(len, lvl) {
 // carousel handler function
 function carouselHandler(e) {
 	if (!e.currentTarget.classList.contains("locked")) {
-		let index = e.currentTarget.dataset.level;
+		activeLvl = +e.currentTarget.dataset.level;
 		resetData();
-		createUi(levels[active][index].typing);
+		createUi(levels[active][activeLvl].typing);
 	}
 }
 
@@ -113,6 +127,7 @@ function latestIndex() {
 	levels[active].forEach((ele, i) => {
 		if (!ele.locked) {
 			latest = levels[active][i];
+			activeLvl = i;
 		}
 	});
 }
@@ -174,10 +189,25 @@ function resetData() {
 
 function gameCompleted() {
 	if (text.length === letterCounter) {
-		console.log("game over");
+		console.log("Game Completed");
 		wordLeft.innerText = 0;
 		stopInterval();
+		data[active][activeLvl]["grades"].push(grade.querySelectorAll(".fas").length);
+		data[active][activeLvl]["time"].push((3 - (min.innerText * 60 + +sec.innerText) / 60).toFixed(2));
+		data[active][activeLvl]["error"].push(mistakes);
+		data[active][activeLvl]["isCompleted"] = true;
+		data[active][activeLvl + 1]["locked"] = false;
+		localStorage.setItem("levels", JSON.stringify(data));
 		document.body.removeEventListener("keyup", gameLogicHandler);
+	}
+}
+
+function limitChecker() {
+	if (mistakes > totalError.innerText || (min.innerText == "0" && sec.innerText == "0" && wordLeft.innerText > 1)) {
+		console.log("Game Over");
+		document.body.removeEventListener("keyup", gameLogicHandler);
+		resetData();
+		stopInterval();
 	}
 }
 
@@ -210,15 +240,6 @@ function stopInterval() {
 	startTimer = null;
 }
 
-function limitChecker() {
-	if (mistakes > totalError.innerText || (min.innerText == "0" && sec.innerText == "0" && wordLeft.innerText > 1)) {
-		console.log("Game Over");
-		document.body.removeEventListener("keyup", gameLogicHandler);
-		resetData();
-		stopInterval();
-	}
-}
-
 function grades() {
 	if (active === "beginner" && min.innerText < 1) {
 		grade.children[1].classList.remove("fas");
@@ -241,16 +262,7 @@ function grades() {
 	}
 }
 
-function wpm() {
-	console.log(wordCounter + 1 / (3 * 60 - (sec.innerText + min.innerText)) / 60, "wpm");
-	if (active == "beginner") {
-		speed.innerText = Math.round(wordCounter + 1 / (3 * 60 - (sec.innerText + min.innerText)) / 60);
-	} else if (active == "intermediate") {
-		speed.innerText = -Math.round(wordCounter + 1 / (2 * 60 - (sec.innerText + min.innerText)) / 60);
-	} else {
-		speed.innerText = -Math.round(wordCounter + 1 / (1 * 60 - (sec.innerText + min.innerText)) / 60);
-	}
-}
+function wpm() {}
 
 latestIndex();
 createUi(latest.typing);

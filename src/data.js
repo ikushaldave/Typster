@@ -1,11 +1,10 @@
-const levels = {
+const data = {
 	beginner: [
 		{
-			typing: "Their camel was, in this moment, a upbeat nectarine. Some kind pineapples are thought of simply as sheeps. The fly of a grapes becomes a fine octopus. One cannot separate scorpions from nice figs; The modest eagle reveals itself as a courageous sheep to those who look.",
+			typing: "Their camel",
 			grades: [],
 			speed: [],
 			time: [],
-			wordLeft: [],
 			error: [],
 			locked: false,
 			isCompleted: false,
@@ -15,9 +14,8 @@ const levels = {
 			grades: [],
 			speed: [],
 			time: [],
-			wordLeft: [],
 			error: [],
-			locked: false,
+			locked: true,
 			isCompleted: false,
 		},
 		{
@@ -25,7 +23,6 @@ const levels = {
 			grades: [],
 			speed: [],
 			time: [],
-			wordLeft: [],
 			error: [],
 			locked: true,
 			isCompleted: false,
@@ -35,7 +32,6 @@ const levels = {
 			grades: [],
 			speed: [],
 			time: [],
-			wordLeft: [],
 			error: [],
 			locked: true,
 			isCompleted: false,
@@ -45,7 +41,6 @@ const levels = {
 			grades: [],
 			speed: [],
 			time: [],
-			wordLeft: [],
 			error: [],
 			locked: true,
 			isCompleted: false,
@@ -57,7 +52,6 @@ const levels = {
 			grades: [],
 			speed: [],
 			time: [],
-			wordLeft: [],
 			error: [],
 			locked: false,
 			isCompleted: false,
@@ -67,7 +61,6 @@ const levels = {
 			grades: [],
 			speed: [],
 			time: [],
-			wordLeft: [],
 			error: [],
 			locked: true,
 			isCompleted: false,
@@ -79,10 +72,11 @@ const levels = {
 			grades: [],
 			speed: [],
 			time: [],
-			wordLeft: [],
 			error: [],
 			locked: false,
 			isCompleted: false,
 		},
 	],
 };
+
+const levels = JSON.parse(localStorage.getItem("levels")) || data;
