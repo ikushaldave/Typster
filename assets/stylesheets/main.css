@@ -247,8 +247,8 @@ button {
 .writing-text {
 	color: #fff;
 	font-size: 1.25rem;
-	font-family: "Courier Prime", monospace;
-	line-height: 1.25;
+	font-family: 'PT Mono', monospace;
+	line-height: 2.5;
 	margin-top: 1.25rem;
 	letter-spacing: 0.025rem;
 	text-align: justify;
@@ -398,6 +398,48 @@ button {
 }
 
 .overlay button {
-	font: inherit;
+	font-family: "Caveat", 'cursive';
 	font-size: 2rem;
+	background-color: #123c4d;
+	opacity: 85%;
+	color: #fff;
+	border: 2px #fff solid;
+	/* border-radius: 30px; */
+	padding: 1rem 4rem;
+}
+
+/* popup */
+
+.retry {
+	text-align: center;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 4rem;
+	background-color: #082631;
+	color: white;
+	border: 10px double #fff;
+	font-family: "Caveat", 'cursive';
+	/* line-height: 2; */
+
+}
+.retry img {
+	margin-left: 3rem;
+	width: 20rem;
+	height: 20rem;
+	/* margin-bottom: 1rem; */
+}
+.try-again {
+	margin-top: 4rem;
+	margin-right: 5rem;
+}
+.retry h1 {
+	font-size: 4rem;
+	font-family: "Caveat", 'cursive';
+	margin-bottom: 2rem;
+}
+.retry a {
+	display: inline-block;
+	font-size: 2rem;
+	color: white;
+	text-decoration: none;
 }
