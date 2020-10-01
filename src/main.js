@@ -1,7 +1,7 @@
 let latest = null;
 let index = 0;
 let mistakes = 0;
-let startTimer = 0;
+let startTimer = null;
 let start = false;
 let text = "";
 let wordsArray = null;
@@ -202,7 +202,6 @@ function startInterval() {
 		limitChecker();
 		grades();
 		wpm();
-		startTimer++;
 	}, 1000);
 }
 
@@ -243,15 +242,13 @@ function grades() {
 }
 
 function wpm() {
-	console.log(startTimer, "sec");
-	if (startTimer % 60 === 0) {
-		if (active == "beginner") {
-			speed.innerText = Math.round(wordCounter + 1 / (3 * 60 - (sec.innerText + min.innerText)) / 60);
-		} else if (active == "intermediate") {
-			speed.innerText = -Math.round(wordCounter + 1 / (2 * 60 - (sec.innerText + min.innerText)) / 60);
-		} else {
-			speed.innerText = -Math.round(wordCounter + 1 / (1 * 60 - (sec.innerText + min.innerText)) / 60);
-		}
+	console.log(wordCounter + 1 / (3 * 60 - (sec.innerText + min.innerText)) / 60, "wpm");
+	if (active == "beginner") {
+		speed.innerText = Math.round(wordCounter + 1 / (3 * 60 - (sec.innerText + min.innerText)) / 60);
+	} else if (active == "intermediate") {
+		speed.innerText = -Math.round(wordCounter + 1 / (2 * 60 - (sec.innerText + min.innerText)) / 60);
+	} else {
+		speed.innerText = -Math.round(wordCounter + 1 / (1 * 60 - (sec.innerText + min.innerText)) / 60);
 	}
 }
 
