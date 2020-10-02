@@ -35,6 +35,7 @@ function findActive() {
 		for (let obj of levels[level]) {
 			if (obj.isCompleted == false) {
 				document.querySelector(`.${level}`).classList.add("active");
+				console.log(obj);
 				activeLvl = levels[level].indexOf(obj);
 				return level;
 			}
@@ -203,7 +204,10 @@ function congratsOverlay() {
 	div.append(congo, statResult, buttons);
 	typewriter.append(div);
 
-	playAgain.addEventListener("click", replay);
+	playAgain.addEventListener("click", function () {
+		document.querySelector(".result").remove();
+		createUi(levels[active][activeLvl].typing);
+	});
 	next.addEventListener("click", nextLevel);
 }
 
@@ -236,6 +240,7 @@ function nextLevel() {
 
 function generateStars() {
 	let span = document.createElement("span");
+	span.classList.add("exercise-rating");
 	let gradeArr = levels[active][activeLvl].grades;
 	let gradeLastStat = gradeArr[gradeArr.length - 1];
 	for (let j = 0; j < 3; j++) {

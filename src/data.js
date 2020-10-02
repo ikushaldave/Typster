@@ -7,7 +7,7 @@ const data = {
 			time: [],
 			error: [],
 			locked: false,
-			isCompleted: true,
+			isCompleted: false,
 		},
 		{
 			typing: "Some assert that authors often misinterpret the fox as a passionate deer, when in actuality it feels more like a creative apricot; This could be, or perhaps the literature would have us believe that a painstaking currant is not but a grapefruit. The receptive nectarine reveals itself as a lively fox to those who look.",
@@ -48,7 +48,7 @@ const data = {
 	],
 	intermediate: [
 		{
-			typing: "Authors often misinterpret the rabbit as an exclusive melon, when in actuality it feels more like a sincere scorpion. They were lost without the warm grapefruit that composed their pig. In modern times a strawberry can hardly be considered a shy sheep without also being a turtle. Of course, an eagle is a rational bee. Few can name an eminent crocodile that isn't a pro-active apricot. Some polite cats are thought of simply as zebras? A bear sees a grape as a peaceful kiwi? Waking to the buzz of the alarm clock, their lemon was, in this moment, a friendly pomegranate.",
+			typing: "The squirrels could be said to resemble compassionate kangaroos. Convivial nectarines show us how apples can be zebras. This is not to discredit the idea that a bird can hardly be considered a succinct alligator without also being a squirrel. This is not to discredit the idea that they were lost without the plausible bird that composed their prune.",
 			grades: [],
 			speed: [],
 			time: [],
@@ -57,7 +57,25 @@ const data = {
 			isCompleted: false,
 		},
 		{
-			typing: "Some assert that authors often misinterpret the fox as a passionate deer, when in actuality it feels more like a creative apricot; This could be, or perhaps the literature would have us believe that a painstaking currant is not but a grapefruit. The receptive nectarine reveals itself as a lively fox to those who look.",
+			typing: "Though we assume the latter, a pineapple is a chicken's sheep? In ancient times we can assume that any instance of a shark can be construed as a funny fox. As far as he is concerned, one cannot separate turtles from mature chimpanzees. Draped neatly on a hanger, their tangerine was, in this moment, an exuberant fox. One cannot separate goldfishes from thrifty cats! A passionate dolphin's snail comes with it the thought that the amusing dolphin is a grapes?",
+			grades: [],
+			speed: [],
+			time: [],
+			error: [],
+			locked: true,
+			isCompleted: false,
+		},
+		{
+			typing: "The smiling bee reveals itself as a plucky hamster to those who look. Though we assume the latter, an industrious fly without kumquats is truly a melon of cultured wolfs. Those apricots are nothing more than tigers. Their fig was, in this moment, a gentle alligator. The tangerines could be said to resemble shrewd pomegranates.",
+			grades: [],
+			speed: [],
+			time: [],
+			error: [],
+			locked: true,
+			isCompleted: false,
+		},
+		{
+			typing: "The unassuming blueberry reveals itself as a trustworthy dog to those who look. A goldfish is the sheep of a bee; A fly can hardly be considered a courageous pig without also being a watermelon! Though we assume the latter, an ant is the kumquat of a kitten.",
 			grades: [],
 			speed: [],
 			time: [],
@@ -68,7 +86,25 @@ const data = {
 	],
 	expert: [
 		{
-			typing: "Some assert that authors often misinterpret the fox as a passionate deer, when in actuality it feels more like a creative apricot; This could be, or perhaps the literature would have us believe that a painstaking currant is not but a grapefruit. The receptive nectarine reveals itself as a lively fox to those who look.",
+			typing: "The dog of a snake becomes an impartial ant. A fig is a grape's fish. The funny strawberry comes from a wise melon. The pigs could be said to resemble gentle zebras! Extending this logic, a lemon of the crocodile is assumed to be a loving grape. A hamster of the cherry is assumed to be a rhetorical grapes?",
+			grades: [],
+			speed: [],
+			time: [],
+			error: [],
+			locked: true,
+			isCompleted: false,
+		},
+		{
+			typing: "This could be, or perhaps the ambitious squirrel comes from a neat sheep? A panda is a dolphin's owl. We can assume that any instance of a prune can be construed as an intelligent grapes. A lime is the hippopotamus of a wolf? A pig is a chicken from the right perspective?",
+			grades: [],
+			speed: [],
+			time: [],
+			error: [],
+			locked: true,
+			isCompleted: false,
+		},
+		{
+			typing: "A careful prune is a hamster of the mind. However, the pomegranate of a grapefruit becomes a tidy rabbit. Some brave blueberries are thought of simply as squirrels. They were lost without the ambitious elephant that composed their tiger! Waking to the buzz of the alarm clock, a tangerine is a lime's duck. Their alligator was, in this moment, a honorable raspberry. They were lost without the alert goldfish that composed their watermelon?",
 			grades: [],
 			speed: [],
 			time: [],
