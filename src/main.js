@@ -1,4 +1,3 @@
-let latest = null;
 let index = 0;
 let mistakes = 0;
 let startTimer = null;
@@ -19,7 +18,7 @@ const levelSelector = document.querySelector(".exercise-level-list");
 const ul = document.querySelector(".exercise-level-list");
 const writingText = document.querySelector(".writing-text");
 const typewriter = document.querySelector(".typewriter");
-let active = document.querySelector(".active").textContent.toLowerCase();
+let active = findActive();
 
 // stats
 const grade = document.querySelector(".grade");
@@ -30,6 +29,18 @@ const error = document.querySelector(".error");
 const totalError = document.querySelector(".total-error");
 const min = document.querySelector(".min");
 const sec = document.querySelector(".sec");
+
+function findActive() {
+	for (let level in levels) {
+		for (let obj of levels[level]) {
+			if (obj.isCompleted == false) {
+				document.querySelector(`.${level}`).classList.add("active");
+				activeLvl = levels[level].indexOf(obj);
+				return level;
+			}
+		}
+	}
+}
 
 function levelHandler(e) {
 	if (e.target.classList.contains("level-btn")) {
@@ -199,25 +210,27 @@ function congratsOverlay() {
 function nextLevel() {
 	document.querySelector(".result").remove();
 	if (isTypeCompleted && active === "beginner") {
-		[level.children].forEach((e) => e.classList.remove("active"));
+		console.log("Beginner Completed");
+		[...level.children].forEach((e) => e.classList.remove("active"));
 		level.children[1].classList.add("active");
 		active = "intermediate";
 		activeLvl = 0;
-		levels[active][activeLvl].locked = false;
 	} else if (isTypeCompleted && active === "intermediate") {
-		[level.children].forEach((e) => e.classList.remove("active"));
+		console.log("intermediate Completed");
+		[...level.children].forEach((e) => e.classList.remove("active"));
 		level.children[2].classList.add("active");
 		active = "expert";
 		activeLvl = 0;
-		levels[active][activeLvl].locked = false;
+	} else if (isTypeCompleted && active === "expert") {
+		console.log("You are Expert");
 	} else {
 		console.log("I am next");
 		activeLvl += activeLvl;
 	}
-	levels[active][activeLvl + 1].locked = false;
-	console.log(activeLvl, active);
+	console.log(isTypeCompleted, active, activeLvl);
+	levels[active][activeLvl].locked = false;
 	localStorage.setItem("levels", JSON.stringify(levels));
-	createUi(levels[active][activeLvl + 1].typing);
+	createUi(levels[active][activeLvl].typing);
 	window.location.reload();
 }
 
@@ -236,15 +249,6 @@ function generateStars() {
 		span.append(star);
 	}
 	return span.outerHTML;
-}
-
-function latestIndex() {
-	levels[active].forEach((ele, i) => {
-		if (!ele.locked) {
-			latest = levels[active][i];
-			activeLvl = i;
-		}
-	});
 }
 
 function gameLogicHandler(e) {
@@ -389,8 +393,7 @@ function wpm() {
 	speed.innerText = Math.abs(netWPM);
 }
 
-latestIndex();
-createUi(latest.typing);
+createUi(levels[active][activeLvl].typing);
 carouselUi(levels[active].length, active);
 
 level.addEventListener("click", levelHandler);
