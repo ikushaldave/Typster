@@ -149,12 +149,73 @@ function retryOverlay() {
 	div.append(img, tryAgain);
 
 	typewriter.append(div);
-	btn.addEventListener("click", function () {
+	btn.addEventListener("click", replay );
+}
+function replay () {
 		document.querySelector(".retry").remove();
 		createUi(levels[active][activeLvl].typing);
-	});
+	}
+function congratsOverlay() {
+	let statObj = levels[active][activeLvl];
+  const div = document.createElement("div");
+  div.classList.add("result", "container");
+	const congo = document.createElement("div");
+	congo.classList.add("congo");
+	congo.innerHTML = ` <h1>Congratulations ! </h1>
+            ${generateStars()}`;
+
+	const statResult = document.createElement("div");
+	statResult.classList.add("stats-result");
+  statResult.innerHTML = ` <div>
+                <p>Speed:</p>
+                <p>${statObj.speed[statObj.speed.length - 1]} wpm</p>
+            </div>
+            <div>
+                <p>Errors:</p>
+                <p>${statObj.error[statObj.error.length - 1]}/10</p>
+            </div>
+            <div>
+                <p>Time:</p>
+                <p>01:00</p>
+			</div>`;
+	const buttons = document.createElement("div");
+	buttons.classList.add("buttons");
+	const playAgain = document.createElement("button");
+	playAgain.innerText = "Play Again";
+	const next = document.createElement("button");
+	next.innerText = "Next";
+	buttons.append(playAgain, next);
+	div.append(congo, statResult, buttons);
+	typewriter.append(div);
+
+	playAgain.addEventListener("click", replay);
+	next.addEventListener("click", nextLevel);
 }
 
+function nextLevel() {
+	document.querySelector(".result").remove();
+	activeLvl += 1;
+  createUi(levels[active][activeLvl].typing);
+}
+
+function generateStars() {
+	let span = document.createElement("span");
+  span.classList.add("exercise-rating");
+  
+  for (let j = 0; j < 3; j++) {
+	  const star = document.createElement("i");
+	  let gradeArr = levels[active][activeLvl].grades;
+  	  let gradeLastStat = gradeArr[gradeArr.length - 1];
+    if (gradeLastStat) {
+      star.classList.add("fas", "fa-star");
+      gradeLastStat--;
+    } else {
+      star.classList.add("far", "fa-star");
+    }
+    span.append(star);
+	}
+	return span.outerHTML;
+}
 function latestIndex() {
 	levels[active].forEach((ele, i) => {
 		if (!ele.locked) {
@@ -238,8 +299,9 @@ function gameCompleted() {
 		} else {
 			data[active][activeLvl + 1]["locked"] = false;
 		}
-		localStorage.setItem("levels", JSON.stringify(data));
+		localStorage.setItem("levels", JSON.stringify(levels));
 		document.body.removeEventListener("keyup", gameLogicHandler);
+		congratsOverlay();
 	}
 }
 
