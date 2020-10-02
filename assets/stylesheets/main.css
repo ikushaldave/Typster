@@ -413,32 +413,41 @@ button {
 .retry {
 	text-align: center;
 	display: flex;
-	justify-content: space-between;
-	margin-top: 4rem;
+	justify-content: space-evenly;
+	align-items: center;
+
 	background-color: #082631;
 	color: white;
 	border: 10px double #fff;
 	font-family: "Caveat", "cursive";
-	/* line-height: 2; */
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
 }
 .retry img {
-	margin-left: 3rem;
 	width: 20rem;
 	height: 20rem;
-	/* margin-bottom: 1rem; */
 }
-.try-again {
-	margin-top: 4rem;
-	margin-right: 5rem;
-}
+
 .retry h1 {
 	font-size: 4rem;
 	font-family: "Caveat", "cursive";
 	margin-bottom: 2rem;
 }
-.retry a {
+.retry button {
 	display: inline-block;
 	font-size: 2rem;
 	color: white;
-	text-decoration: none;
+	font-family: inherit;
+	background-color: transparent;
+	border: 1.5px solid white;
+	border-radius: 30px;
+	padding: 0.25rem 1.2rem 0.5rem 1.2rem;
+}
+.fa-redo {
+	padding-left: 1rem;
+	font-size: 1.2rem;
 }

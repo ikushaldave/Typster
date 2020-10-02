@@ -1,7 +1,7 @@
 const data = {
 	beginner: [
 		{
-			typing: "Their camel",
+			typing: "Their camel was so skinny that they could't use it for meat",
 			grades: [],
 			speed: [],
 			time: [],

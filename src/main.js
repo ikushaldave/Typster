@@ -10,6 +10,8 @@ let wordLen = 0;
 let letterCounter = 0;
 let activeLvl = null;
 let isTypeCompleted = null;
+const speedArr = [];
+let speedAvg = null;
 
 // DOM Selectors
 const level = document.querySelector(".levels");
@@ -84,6 +86,9 @@ function carouselHandler(e) {
 		e.currentTarget.children[0].classList.add("active-carosel");
 
 		resetData();
+		if (document.querySelector(".retry")) {
+			document.querySelector(".retry").remove();
+		}
 		createUi(levels[active][activeLvl].typing);
 	}
 }
@@ -124,6 +129,30 @@ function overlayGenerate() {
 	div.classList.add("overlay");
 	div.append(btn);
 	typewriter.append(div);
+}
+
+function retryOverlay() {
+	const div = document.createElement("div");
+	div.classList.add("retry", "container");
+	const img = document.createElement("img");
+	img.src = "../assets/Images/gray-cat.png";
+	const tryAgain = document.createElement("div");
+	const h1 = document.createElement("h1");
+	h1.innerText = "Better Luck Next Time !";
+	const icon = document.createElement("i");
+	icon.classList.add("fal", "fa-redo");
+	const btn = document.createElement("button");
+	btn.innerText = "Retry";
+	btn.append(icon);
+	tryAgain.append(h1, btn);
+
+	div.append(img, tryAgain);
+
+	typewriter.append(div);
+	btn.addEventListener("click", function () {
+		document.querySelector(".retry").remove();
+		createUi(levels[active][activeLvl].typing);
+	});
 }
 
 function latestIndex() {
@@ -198,6 +227,8 @@ function gameCompleted() {
 		data[active][activeLvl]["grades"].push(grade.querySelectorAll(".fas").length);
 		data[active][activeLvl]["time"].push((3 - (min.innerText * 60 + +sec.innerText) / 60).toFixed(2));
 		data[active][activeLvl]["error"].push(mistakes);
+		speedAvg = Math.round(speedArr.reduce((a, c) => a + c) / speedArr.length);
+		data[active][activeLvl]["speed"].push(speedAvg);
 		data[active][activeLvl]["isCompleted"] = true;
 		isTypeCompleted = data[active].every((lvl) => lvl.isCompleted == true);
 		if (isTypeCompleted) {
@@ -218,6 +249,7 @@ function limitChecker() {
 		document.body.removeEventListener("keyup", gameLogicHandler);
 		resetData();
 		stopInterval();
+		retryOverlay();
 	}
 }
 
@@ -273,7 +305,11 @@ function grades() {
 }
 
 function wpm() {
-	console.log(letterCounter);
+	const time = (3 - (+min.innerText + +sec.innerText / 60)).toFixed(2);
+	const grossWPM = Math.round([letterCounter / 5] / time);
+	const netWPM = Math.round(grossWPM - mistakes / time);
+	speedArr.push(netWPM);
+	speed.innerText = netWPM;
 }
 
 latestIndex();
