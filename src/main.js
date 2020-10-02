@@ -81,6 +81,9 @@ function carouselHandler(e) {
 	if (!e.currentTarget.classList.contains("locked")) {
 		activeLvl = +e.currentTarget.dataset.level;
 		resetData();
+		if (document.querySelector(".retry")) {
+			document.querySelector(".retry").remove();
+		}
 		createUi(levels[active][activeLvl].typing);
 	}
 }
@@ -121,6 +124,32 @@ function overlayGenerate() {
 	div.classList.add("overlay");
 	div.append(btn);
 	typewriter.append(div);
+}
+
+function retryOverlay() {
+	const div = document.createElement("div");
+	div.classList.add("retry", "container");
+  const img = document.createElement("img");
+  img.src =
+    "../assets/Images/gray-cat.png"
+	;
+	const tryAgain = document.createElement("div");
+	const h1 = document.createElement("h1");
+	h1.innerText = "Better Luck Next Time !";
+	const icon = document.createElement("i");
+	icon.classList.add("fal", "fa-redo");
+	const btn = document.createElement("button");
+	btn.innerText = "Retry";
+	btn.append(icon);
+	tryAgain.append(h1, btn);
+	
+	div.append(img, tryAgain);
+	
+	typewriter.append(div);
+	btn.addEventListener("click", function () {
+		document.querySelector(".retry").remove();
+		createUi(levels[active][activeLvl].typing);
+	});
 }
 
 function latestIndex() {
@@ -208,6 +237,7 @@ function limitChecker() {
 		document.body.removeEventListener("keyup", gameLogicHandler);
 		resetData();
 		stopInterval();
+		retryOverlay();
 	}
 }
 
