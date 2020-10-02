@@ -1,7 +1,7 @@
 const data = {
 	beginner: [
 		{
-			typing: "The considerate banana reveals itself as an amicable grapefruit to those who look! A turtle of the sheep is assumed to be a dashing hippopotamus. In ancient times those plums are nothing more than scorpions! Before crocodiles, limes were only birds.",
+			typing: "The considerate banana reveals itself as an amicable grapefruit to those who look! A turtle of the sheep is assumed to be a dashing hippopotamus. In ancient times those plums are nothing more than scorpions! Before crocodiles, limes were only birds. An industrious cherry's grapes comes with it the thought that the compassionate tangerine is a tangerine.",
 			grades: [],
 			speed: [],
 			time: [],
