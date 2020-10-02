@@ -190,7 +190,7 @@ button {
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	margin-top: 2rem;
+	/* margin-top: 2rem; */
 }
 .level-btn {
 	box-shadow: none;
@@ -464,11 +464,10 @@ button {
 	left: 0;
 	right: 0;
 	z-index: 100;
-	background-color: #1E4656;
-
+	background-color: #1e4656;
 }
 .congo h1 {
-	font-family: "Caveat", 'cursive';
+	font-family: "Caveat", "cursive";
 	font-size: 4rem;
 	color: white;
 }
@@ -485,7 +484,7 @@ button {
 	margin-top: 2rem;
 	color: white;
 	font-size: 2rem;
-	font-family: "Caveat", 'cursive';
+	font-family: "Caveat", "cursive";
 }
 .buttons button {
 	margin: 2.5rem 2rem;

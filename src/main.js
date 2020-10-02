@@ -149,16 +149,20 @@ function retryOverlay() {
 	div.append(img, tryAgain);
 
 	typewriter.append(div);
-	btn.addEventListener("click", replay );
+	btn.addEventListener("click", replay);
 }
-function replay () {
-		document.querySelector(".retry").remove();
-		createUi(levels[active][activeLvl].typing);
-	}
+
+function replay() {
+	document.querySelector(".retry").remove();
+	createUi(levels[active][activeLvl].typing);
+}
+
 function congratsOverlay() {
-	let statObj = levels[active][activeLvl];
-  const div = document.createElement("div");
-  div.classList.add("result", "container");
+	const statObj = levels[active][activeLvl];
+	const time = String(statObj.time[statObj.time.length - 1]);
+	console.log(time, time[0], Math.round(60 / +time.slice(2)));
+	const div = document.createElement("div");
+	div.classList.add("result", "container");
 	const congo = document.createElement("div");
 	congo.classList.add("congo");
 	congo.innerHTML = ` <h1>Congratulations ! </h1>
@@ -166,17 +170,17 @@ function congratsOverlay() {
 
 	const statResult = document.createElement("div");
 	statResult.classList.add("stats-result");
-  statResult.innerHTML = ` <div>
+	statResult.innerHTML = ` <div>
                 <p>Speed:</p>
                 <p>${statObj.speed[statObj.speed.length - 1]} wpm</p>
             </div>
             <div>
                 <p>Errors:</p>
-                <p>${statObj.error[statObj.error.length - 1]}/10</p>
+                <p>${statObj.error[statObj.error.length - 1]} / ${active == "beginner" ? "10" : active == "intermediate" ? "8" : 8}</p>
             </div>
             <div>
                 <p>Time:</p>
-                <p>01:00</p>
+                <p>${time[0]}:${Math.round(60 / +time.slice(2))}s</p>
 			</div>`;
 	const buttons = document.createElement("div");
 	buttons.classList.add("buttons");
@@ -194,28 +198,46 @@ function congratsOverlay() {
 
 function nextLevel() {
 	document.querySelector(".result").remove();
-	activeLvl += 1;
-  createUi(levels[active][activeLvl].typing);
+	if (isTypeCompleted && active === "beginner") {
+		[level.children].forEach((e) => e.classList.remove("active"));
+		level.children[1].classList.add("active");
+		active = "intermediate";
+		activeLvl = 0;
+		levels[active][activeLvl].locked = false;
+	} else if (isTypeCompleted && active === "intermediate") {
+		[level.children].forEach((e) => e.classList.remove("active"));
+		level.children[2].classList.add("active");
+		active = "expert";
+		activeLvl = 0;
+		levels[active][activeLvl].locked = false;
+	} else {
+		console.log("I am next");
+		activeLvl += activeLvl;
+	}
+	levels[active][activeLvl + 1].locked = false;
+	console.log(activeLvl, active);
+	localStorage.setItem("levels", JSON.stringify(levels));
+	createUi(levels[active][activeLvl + 1].typing);
+	window.location.reload();
 }
 
 function generateStars() {
 	let span = document.createElement("span");
-  span.classList.add("exercise-rating");
-  
-  for (let j = 0; j < 3; j++) {
-	  const star = document.createElement("i");
-	  let gradeArr = levels[active][activeLvl].grades;
-  	  let gradeLastStat = gradeArr[gradeArr.length - 1];
-    if (gradeLastStat) {
-      star.classList.add("fas", "fa-star");
-      gradeLastStat--;
-    } else {
-      star.classList.add("far", "fa-star");
-    }
-    span.append(star);
+	let gradeArr = levels[active][activeLvl].grades;
+	let gradeLastStat = gradeArr[gradeArr.length - 1];
+	for (let j = 0; j < 3; j++) {
+		const star = document.createElement("i");
+		if (gradeLastStat) {
+			star.classList.add("fas", "fa-star");
+			gradeLastStat--;
+		} else {
+			star.classList.add("far", "fa-star");
+		}
+		span.append(star);
 	}
 	return span.outerHTML;
 }
+
 function latestIndex() {
 	levels[active].forEach((ele, i) => {
 		if (!ele.locked) {
@@ -285,22 +307,15 @@ function gameCompleted() {
 		console.log("Game Completed");
 		wordLeft.innerText = 0;
 		stopInterval();
-		data[active][activeLvl]["grades"].push(grade.querySelectorAll(".fas").length);
-		data[active][activeLvl]["time"].push((3 - (min.innerText * 60 + +sec.innerText) / 60).toFixed(2));
-		data[active][activeLvl]["error"].push(mistakes);
+		levels[active][activeLvl]["grades"].push(grade.querySelectorAll(".fas").length);
+		levels[active][activeLvl]["time"].push((3 - (min.innerText * 60 + +sec.innerText) / 60).toFixed(2));
+		levels[active][activeLvl]["error"].push(mistakes);
 		speedAvg = Math.round(speedArr.reduce((a, c) => a + c) / speedArr.length);
-		data[active][activeLvl]["speed"].push(speedAvg);
-		data[active][activeLvl]["isCompleted"] = true;
-		isTypeCompleted = data[active].every((lvl) => lvl.isCompleted == true);
-		if (isTypeCompleted) {
-			console.log("ALL Beginner Completed");
-			console.log(active);
-			data["intermediate"][0]["locked"] = false;
-		} else {
-			data[active][activeLvl + 1]["locked"] = false;
-		}
-		localStorage.setItem("levels", JSON.stringify(levels));
+		levels[active][activeLvl]["speed"].push(speedAvg);
+		levels[active][activeLvl]["isCompleted"] = true;
+		isTypeCompleted = levels[active].every((lvl) => lvl.isCompleted == true);
 		document.body.removeEventListener("keyup", gameLogicHandler);
+		localStorage.setItem("levels", JSON.stringify(levels));
 		congratsOverlay();
 	}
 }
@@ -370,8 +385,8 @@ function wpm() {
 	const time = (3 - (+min.innerText + +sec.innerText / 60)).toFixed(2);
 	const grossWPM = Math.round([letterCounter / 5] / time);
 	const netWPM = Math.round(grossWPM - mistakes / time);
-	speedArr.push(netWPM);
-	speed.innerText = netWPM;
+	speedArr.push(Math.abs(netWPM));
+	speed.innerText = Math.abs(netWPM);
 }
 
 latestIndex();
