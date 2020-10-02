@@ -146,7 +146,7 @@ function retryOverlay() {
 	const div = document.createElement("div");
 	div.classList.add("retry", "container");
 	const img = document.createElement("img");
-	img.src = "../assets/Images/gray-cat.png";
+	img.src = "https://i.ibb.co/3m9hCKY/gray-cat.png";
 	const tryAgain = document.createElement("div");
 	const h1 = document.createElement("h1");
 	h1.innerText = "Better Luck Next Time !";
