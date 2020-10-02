@@ -9,6 +9,7 @@ let wordCounter = 0;
 let wordLen = 0;
 let letterCounter = 0;
 let activeLvl = null;
+let isTypeCompleted = null;
 
 // DOM Selectors
 const level = document.querySelector(".levels");
@@ -80,6 +81,8 @@ function carouselUi(len, lvl) {
 function carouselHandler(e) {
 	if (!e.currentTarget.classList.contains("locked")) {
 		activeLvl = +e.currentTarget.dataset.level;
+		e.currentTarget.children[0].classList.add("active-carosel");
+
 		resetData();
 		createUi(levels[active][activeLvl].typing);
 	}
@@ -196,7 +199,14 @@ function gameCompleted() {
 		data[active][activeLvl]["time"].push((3 - (min.innerText * 60 + +sec.innerText) / 60).toFixed(2));
 		data[active][activeLvl]["error"].push(mistakes);
 		data[active][activeLvl]["isCompleted"] = true;
-		data[active][activeLvl + 1]["locked"] = false;
+		isTypeCompleted = data[active].every((lvl) => lvl.isCompleted == true);
+		if (isTypeCompleted) {
+			console.log("ALL Beginner Completed");
+			console.log(active);
+			data["intermediate"][0]["locked"] = false;
+		} else {
+			data[active][activeLvl + 1]["locked"] = false;
+		}
 		localStorage.setItem("levels", JSON.stringify(data));
 		document.body.removeEventListener("keyup", gameLogicHandler);
 	}
@@ -262,7 +272,9 @@ function grades() {
 	}
 }
 
-function wpm() {}
+function wpm() {
+	console.log(letterCounter);
+}
 
 latestIndex();
 createUi(latest.typing);

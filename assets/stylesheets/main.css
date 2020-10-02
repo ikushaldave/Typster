@@ -247,7 +247,7 @@ button {
 .writing-text {
 	color: #fff;
 	font-size: 1.25rem;
-	font-family: 'PT Mono', monospace;
+	font-family: "PT Mono", monospace;
 	line-height: 2.5;
 	margin-top: 1.25rem;
 	letter-spacing: 0.025rem;
@@ -398,7 +398,7 @@ button {
 }
 
 .overlay button {
-	font-family: "Caveat", 'cursive';
+	font-family: "Caveat", "cursive";
 	font-size: 2rem;
 	background-color: #123c4d;
 	opacity: 85%;
@@ -418,9 +418,8 @@ button {
 	background-color: #082631;
 	color: white;
 	border: 10px double #fff;
-	font-family: "Caveat", 'cursive';
+	font-family: "Caveat", "cursive";
 	/* line-height: 2; */
-
 }
 .retry img {
 	margin-left: 3rem;
@@ -434,7 +433,7 @@ button {
 }
 .retry h1 {
 	font-size: 4rem;
-	font-family: "Caveat", 'cursive';
+	font-family: "Caveat", "cursive";
 	margin-bottom: 2rem;
 }
 .retry a {
