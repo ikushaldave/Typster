@@ -17,7 +17,6 @@ function main() {
 
 	// DOM Selectors
 	const level = document.querySelector(".levels");
-	const levelSelector = document.querySelector(".exercise-level-list");
 	const ul = document.querySelector(".exercise-level-list");
 	const writingText = document.querySelector(".writing-text");
 	const typewriter = document.querySelector(".typewriter");
@@ -26,7 +25,6 @@ function main() {
 	// stats
 	const grade = document.querySelector(".grade");
 	const speed = document.querySelector(".speed");
-	const time = document.querySelector(".time");
 	const wordLeft = document.querySelector(".word-left");
 	const error = document.querySelector(".error");
 	const totalError = document.querySelector(".total-error");
@@ -120,13 +118,13 @@ function main() {
 		started = true;
 
 		if (active == "beginner") {
-			totalError.innerText = "10";
+			totalError.innerText = "20";
 			min.innerText = 3;
 		} else if (active == "intermediate") {
-			totalError.innerText = "8";
+			totalError.innerText = "15";
 			min.innerText = 2;
 		} else {
-			totalError.innerText = "6";
+			totalError.innerText = "10";
 			min.innerText = 1;
 		}
 
@@ -188,7 +186,7 @@ function main() {
             </div>
             <div>
                 <p>Errors:</p>
-                <p>${statObj.error[statObj.error.length - 1]} / ${active == "beginner" ? "10" : active == "intermediate" ? "8" : 8}</p>
+                <p>${statObj.error[statObj.error.length - 1]} / ${active == "beginner" ? "20" : active == "intermediate" ? "15" : 10}</p>
             </div>
             <div>
                 <p>Time:</p>
