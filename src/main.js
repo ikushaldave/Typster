@@ -17,7 +17,6 @@ function main() {
 
 	// DOM Selectors
 	const level = document.querySelector(".levels");
-	const levelSelector = document.querySelector(".exercise-level-list");
 	const ul = document.querySelector(".exercise-level-list");
 	const writingText = document.querySelector(".writing-text");
 	const typewriter = document.querySelector(".typewriter");
@@ -26,7 +25,6 @@ function main() {
 	// stats
 	const grade = document.querySelector(".grade");
 	const speed = document.querySelector(".speed");
-	const time = document.querySelector(".time");
 	const wordLeft = document.querySelector(".word-left");
 	const error = document.querySelector(".error");
 	const totalError = document.querySelector(".total-error");
@@ -38,7 +36,6 @@ function main() {
 			for (let obj of levels[level]) {
 				if (obj.isCompleted == false) {
 					document.querySelector(`.${level}`).classList.add("active");
-
 					activeLvl = levels[level].indexOf(obj);
 					return level;
 				}
@@ -120,13 +117,13 @@ function main() {
 		started = true;
 
 		if (active == "beginner") {
-			totalError.innerText = "10";
+			totalError.innerText = "20";
 			min.innerText = 3;
 		} else if (active == "intermediate") {
-			totalError.innerText = "8";
+			totalError.innerText = "15";
 			min.innerText = 2;
 		} else {
-			totalError.innerText = "6";
+			totalError.innerText = "10";
 			min.innerText = 1;
 		}
 
@@ -177,7 +174,7 @@ function main() {
 		div.classList.add("result", "container");
 		const congo = document.createElement("div");
 		congo.classList.add("congo");
-		congo.innerHTML = ` <h1>Congratulations ! </h1>
+		congo.innerHTML = ` <h1>${gameOver() ? "🎉 Congratulations On Completion 🎉!" : "Congratulations !"} </h1>
             ${generateStars()}`;
 
 		const statResult = document.createElement("div");
@@ -188,7 +185,7 @@ function main() {
             </div>
             <div>
                 <p>Errors:</p>
-                <p>${statObj.error[statObj.error.length - 1]} / ${active == "beginner" ? "10" : active == "intermediate" ? "8" : 8}</p>
+                <p>${statObj.error[statObj.error.length - 1]} / ${active == "beginner" ? "20" : active == "intermediate" ? "15" : 10}</p>
             </div>
             <div>
                 <p>Time:</p>
@@ -199,7 +196,7 @@ function main() {
 		const playAgain = document.createElement("button");
 		playAgain.innerText = "Play Again";
 		const next = document.createElement("button");
-		next.innerText = "Next";
+		next.innerText = gameOver() ? "Reset Game Data" : "Next";
 		buttons.append(playAgain, next);
 		div.append(congo, statResult, buttons);
 		typewriter.append(div);
@@ -213,6 +210,19 @@ function main() {
 
 	function nextLevel() {
 		document.querySelector(".result").remove();
+
+		if (gameOver()) {
+			delete localStorage.levels;
+			main();
+			return;
+		}
+
+		unlockedNext();
+		createUi(levels[active][activeLvl].typing);
+		window.location.reload();
+	}
+
+	function unlockedNext() {
 		if (isTypeCompleted && active === "beginner") {
 			[...level.children].forEach((e) => e.classList.remove("active"));
 			level.children[1].classList.add("active");
@@ -229,8 +239,6 @@ function main() {
 		}
 		levels[active][activeLvl].locked = false;
 		localStorage.setItem("levels", JSON.stringify(levels));
-		createUi(levels[active][activeLvl].typing);
-		window.location.reload();
 	}
 
 	function generateStars() {
@@ -316,6 +324,7 @@ function main() {
 			document.body.removeEventListener("keyup", gameLogicHandler);
 			localStorage.setItem("levels", JSON.stringify(levels));
 			congratsOverlay();
+			unlockedNext();
 		}
 	}
 
@@ -385,6 +394,18 @@ function main() {
 		const netWPM = Math.round(grossWPM - mistakes / time);
 		speedArr.push(Math.abs(netWPM));
 		speed.innerText = Math.abs(netWPM);
+	}
+
+	function gameOver() {
+		for (let level in levels) {
+			for (let obj of levels[level]) {
+				if (obj.isCompleted == false) {
+					return false;
+				}
+			}
+			activeLvl;
+		}
+		return true;
 	}
 
 	createUi(levels[active][activeLvl].typing);

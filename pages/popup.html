@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Caveat:wght@700&family=Courier+Prime&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Caveat:wght@700&family=Courier+Prime&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="../assets/stylesheets/main.css" />
+		<style>
+			body {
+				width: 200px;
+			}
 
-    <link rel="stylesheet" href="../assets/stylesheets/main.css"/>
-</head>
-<body>
-    <div class="retry container">
-        <img src="../assets/Images/gray-cat.png>
-        <div class="try-again">
-            <h1>Better Luck Next Time ! </h1>
-            <button>Retry</button>
-        </div>
-    </div>
-</body>
+			a {
+				display: block;
+				margin: 1rem;
+				text-align: center;
+				color: #fff;
+				cursor: pointer;
+			}
+
+			.start-typing {
+				text-decoration: none;
+				padding: 0.5rem 1rem;
+				text-align: center;
+				color: aquamarine;
+				background-color: rgb(185, 185, 22);
+			}
+		</style>
+	</head>
+	<body>
+		<a class="start-typing">Start Typing</a>
+		<a href="https://github.com/ikushaldave/Typster" target="_blank">Read About Typster</a>
+
+		<script src="../src/popup.js"></script>
+	</body>
 </html>
