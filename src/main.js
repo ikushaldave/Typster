@@ -217,7 +217,6 @@ function main() {
 			return;
 		}
 
-		unlockedNext();
 		createUi(levels[active][activeLvl].typing);
 		window.location.reload();
 	}
@@ -238,6 +237,7 @@ function main() {
 			activeLvl++;
 		}
 		levels[active][activeLvl].locked = false;
+		console.log(activeLvl);
 		localStorage.setItem("levels", JSON.stringify(levels));
 	}
 
@@ -410,7 +410,7 @@ function main() {
 
 	createUi(levels[active][activeLvl].typing);
 	carouselUi(levels[active].length, active);
-
+	console.log(activeLvl);
 	level.addEventListener("click", levelHandler);
 }
 
